@@ -1,0 +1,46 @@
+# Ambiente Python
+.venv/
+venv/
+env/
+*.egg-info/
+.Python
+
+# Cache / bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Banco local (mantém a pasta)
+data/*
+!data/.gitkeep
+
+# Relatórios gerados (mantém a pasta)
+exports/*
+!exports/.gitkeep
+
+# Build / executável
+build/
+dist/
+dist_new/
+*.spec
+*.exe
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Sistema / Dropbox
+.DS_Store
+Thumbs.db
+desktop.ini
+* conflicted copy *
+
+# Logs e temporários
+*.log
+*.tmp
+_test_*.py
