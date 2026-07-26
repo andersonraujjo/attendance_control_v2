@@ -23,7 +23,7 @@ A v2 muda o paradigma para **lançamento em lote**, pensado para jornada com hor
 | Arquitetura | Tudo no `main.py` | Camadas (UI / services / repository / models) |
 | Pós-lançamento | — | Lista, editar, excluir, excluir todos |
 | Visão geral | — | **Dashboard** (semana / mês / por épico) |
-| Export | CSV/XLSX | Mantém **formato v1** (compatível com o que o chefe já recebe) |
+| Export | CSV/XLSX | Mantém **formato v1** |
 | Anti-erro | — | Trava de duplicata (mesmo épico + datas) |
 
 ### Telas
