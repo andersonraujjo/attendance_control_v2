@@ -3,7 +3,48 @@
 App desktop para lançar horas por **épico** em múltiplas datas, com divisão igualitária, listagem, export no formato v1 e dashboard de totais.
 
 > Projeto novo — **não altera** o `ponto_eletronico` (v1).  
-> Decisões e roadmap: [`docs/PLANO.md`](docs/PLANO.md)
+> Decisões e roadmap: [`docs/PLANO.md`](docs/PLANO.md) · Riscos: [`docs/RISCOS.md`](docs/RISCOS.md)
+
+---
+
+## O que melhorou em relação à v1
+
+A v1 (`ponto_eletronico`) funciona como **cronômetro**: bater entrada → bater saída em tempo real. Na prática, atrasar uma semana virava edição manual no SQLite.
+
+A v2 muda o paradigma para **lançamento em lote**, pensado para jornada com horas fixas/variáveis na semana:
+
+| | v1 | v2 |
+|---|---|---|
+| Fluxo | Entrada/saída ao vivo | Total de horas + datas + confirmar |
+| Campo livre | Comentário | **Épico** |
+| Datas | Sempre “hoje” | Multi-select + atalhos “esta semana” |
+| Correção atrasada | Manual no banco | Fluxo nativo do app |
+| UI | CustomTkinter | **Flet** (mais moderna) |
+| Arquitetura | Tudo no `main.py` | Camadas (UI / services / repository / models) |
+| Pós-lançamento | — | Lista, editar, excluir, excluir todos |
+| Visão geral | — | **Dashboard** (semana / mês / por épico) |
+| Export | CSV/XLSX | Mantém **formato v1** (compatível com o que o chefe já recebe) |
+| Anti-erro | — | Trava de duplicata (mesmo épico + datas) |
+
+### Telas
+
+**Lançamento** — horas, épico, calendário multi-select e atalhos da semana:
+
+![Lançamento](img/img1.png)
+
+**Preview** — divisão igualitária antes de confirmar:
+
+![Preview](img/img2.png)
+
+**Registros** — listar, editar, excluir e exportar (formato v1):
+
+![Registros](img/img3.png)
+
+**Dashboard** — totais da semana, do mês e por épico:
+
+![Dashboard](img/img4.png)
+
+---
 
 ## Stack
 
@@ -74,5 +115,7 @@ app/
   db/           # SQLite init
 data/           # banco local
 exports/        # CSV/XLSX gerados
+img/            # screenshots do README
 docs/PLANO.md   # esboço e decisões
+docs/RISCOS.md  # riscos / hardening
 ```
