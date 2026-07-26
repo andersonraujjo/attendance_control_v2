@@ -24,9 +24,11 @@ exports/*
 # Build / executável
 build/
 dist/
+dist_build/
 dist_new/
 *.spec
 *.exe
+PontoEletronicoV2.exe
 
 # IDE / editor
 .idea/

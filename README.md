@@ -82,9 +82,7 @@ Pasta do projeto:
 
 Na tela **Registros** o caminho completo aparece no topo e, ao exportar, o app abre a pasta automaticamente (botão **Abrir pasta**).
 
-Se rodar pelo `.exe`, os arquivos ficam ao lado do executável:
-
-`dist\exports\`
+O `.exe` fica na **raiz do projeto**, então usa as **mesmas** pastas `data\` e `exports\` do `python -m app.main` (um único banco).
 
 ## Gerar / usar o .exe
 
@@ -92,29 +90,35 @@ Se rodar pelo `.exe`, os arquivos ficam ao lado do executável:
 .\scripts\build_exe.ps1
 ```
 
-Ou manualmente:
+Ou manualmente (gera em pasta temporária e move pra raiz):
 
 ```powershell
-.\.venv\Scripts\flet.exe pack run.py -n "PontoEletronicoV2" -y
+.\.venv\Scripts\flet.exe pack run.py -n "PontoEletronicoV2" -y --distpath dist_build
+Move-Item .\dist_build\PontoEletronicoV2.exe .\PontoEletronicoV2.exe -Force
+Remove-Item -Recurse -Force dist_build
 ```
 
-Executável gerado em:
+Executável:
 
-`dist\PontoEletronicoV2.exe`
+`PontoEletronicoV2.exe` (raiz do projeto)
 
-Clique duas vezes para abrir. Banco e exports são criados na mesma pasta do `.exe` (`data\` e `exports\`).
+Clique duas vezes para abrir. Banco e exports:
+
+- `data\ponto_v2.db`
+- `exports\relatorio_ponto_*.csv`
 
 ## Estrutura
 
 ```
+PontoEletronicoV2.exe   # executável (raiz)
 app/
   ui/           # telas Flet
   services/     # regras (split, export)
   repository/   # SQL
   models/       # dataclasses
   db/           # SQLite init
-data/           # banco local
-exports/        # CSV/XLSX gerados
+data/           # banco local (dev + exe)
+exports/        # CSV/XLSX gerados (dev + exe)
 img/            # screenshots do README
 docs/PLANO.md   # esboço e decisões
 docs/RISCOS.md  # riscos / hardening

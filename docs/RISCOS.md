@@ -55,10 +55,10 @@ Use este doc como backlog de hardening. Itens marcados `[ ]` ainda não foram tr
 - [ ] Arquivo já aberto no Excel → `PermissionError`.
 - [ ] Na lista isso é capturado e vira mensagem (ok), mas a operação falha.
 
-### 9. Dois “mundos” de dados
+### 9. Dois “mundos” de dados (mitigado)
 
-- [ ] `.exe` em `dist\` vs `python -m app.main` usam bancos diferentes.
-- [ ] Parece “sumiu meu registro” / “duplicou” — confusão operacional, não bug de código.
+- [x] O `.exe` deve ficar na **raiz do projeto** (junto com `data/` e `exports/`), igual ao `python -m app.main`.
+- [ ] Se alguém rodar um `.exe` de outra pasta, ainda cria `data/` e `exports/` locais ali — atenção ao mover o executável.
 
 ---
 
